@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using StoreManagement.IService;
+using StoreManagement.Models;
+using StoreManagement.Services;
+
 namespace StoreManagement
 {
     public class Program
@@ -8,6 +13,14 @@ namespace StoreManagement
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<WebContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("Web")));
+            builder.Services.AddScoped<IProductService, ProductServices>();
+            builder.Services.AddScoped<ICategoryService, CategoryServices>();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
 
             var app = builder.Build();
 

@@ -9,6 +9,4 @@
             $('#main').css("margin-left", "0px");
         }
     });
-
-    
 })

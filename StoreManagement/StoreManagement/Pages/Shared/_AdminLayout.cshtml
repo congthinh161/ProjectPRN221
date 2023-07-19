@@ -1,7 +1,4 @@
-﻿
-
-
-@using Microsoft.AspNetCore.Http
+﻿@using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
 
 <!DOCTYPE html>
@@ -19,20 +16,19 @@
     <!-- Fontawe -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <link rel="stylesheet" href="~/css/admin.css">
+
     @await RenderSectionAsync("Styles", required: false)
-    @*
-    <link rel="stylesheet" href="~/CellphoneStore.styles.css">*@
+
 
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header class="header">
         <div class="header-child-1">
             <div class="logo">
-                <a href="/"><img src="~/img/LogoMobile.png" width="30" height="30" alt=""></a>
+                <a href="/"><img src="~/img/LogoMobile.png" width="40" height="40" alt=""></a>
                 <div class="brand-name">
-                    <p>Cellphone Store</p>
+                    <p class="mt-2">Cellphone Store</p>
                 </div>
             </div>
 
@@ -54,7 +50,7 @@
     <div class="my-sidenav" id="sidenav">
         <a href="/Admin/Dashboard"><i class="fa-solid fa-chart-line"></i>&nbsp; Tổng quan</a>
         <a href="/Admin/Orders"><i class="fa-solid fa-file-invoice-dollar"></i>&nbsp; Đơn hàng</a>
-        @*<a href="#"><i class="fa-solid fa-list"></i>&nbsp; Quản lí danh mục sản phẩm</a>*@
+        <a href="#"><i class="fa-solid fa-list"></i>&nbsp; Quản lí danh mục sản phẩm</a>
         <a href="/Admin/ProductManage"><i class="fa-solid fa-box"></i>&nbsp; Quản lí sản phẩm</a>
         <a href="/Admin/UsersManage"><i class="fa-solid fa-users"></i>&nbsp; Quản lí người dùng</a>
     </div>

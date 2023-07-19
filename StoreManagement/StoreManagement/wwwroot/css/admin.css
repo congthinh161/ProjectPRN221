@@ -176,8 +176,8 @@ h1 {
     z-index: 2;
 }
 
-    .header .header-child-1 {
-        background-color: #343A40;
+.header .header-child-1 {
+        background-color: cadetblue;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -185,13 +185,13 @@ h1 {
         justify-content: space-between;
         color: #fff;
         height: 4.5rem;
-    }
+}
 
 .logo {
     display: flex;
     justify-content: center;
     /* overflow: hidden; */
-    height: 2rem;
+    height: 3rem;
 }
 
 .brand-name > p {

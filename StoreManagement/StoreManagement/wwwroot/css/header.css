@@ -9,7 +9,7 @@ body {
 }
 
     .header .header-child-1 {
-        background-color: white;
+        background-color: cadetblue;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     /* overflow: hidden; */
-    height: 2rem;
+    height: 3rem;
 }
 
 .brand-name > p {
