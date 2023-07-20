@@ -75,5 +75,11 @@ namespace StoreManagement.Services
                 return 0;
             }
         }
+
+        public void AddNewProduct(Product product)
+        {
+            _context.Add(product);
+            _context.SaveChanges();
+        }
     }
 }

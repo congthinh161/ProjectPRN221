@@ -20,7 +20,11 @@ namespace StoreManagement
             builder.Services.AddDbContext<WebContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("Web")));
             builder.Services.AddScoped<IProductService, ProductServices>();
             builder.Services.AddScoped<ICategoryService, CategoryServices>();
+            builder.Services.AddScoped<IProductDetailService, ProductDetailServices>();
+            builder.Services.AddScoped<IColorDetailServices, ColorDetailServices>();
+            builder.Services.AddScoped<IStorageDetailServices, StorageDetailServices>();
             
+            builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(option =>
             {

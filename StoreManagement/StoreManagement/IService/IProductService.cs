@@ -8,6 +8,7 @@ namespace StoreManagement.IService
         public List<Product> GetListProductPaging(int skip);
         public int CountAllProduct();
         public int CountProductsByCategory(int cateId);
+        public void AddNewProduct(Product product);
         public int RemoveProduct(string pId);
 
     }

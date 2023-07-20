@@ -3,7 +3,9 @@
 @{
     Layout = "_AdminLayout";
     ViewData["Title"] = "Add New";
+
 }
+
 
 <div class="container">
     <div class="alert alert-primary" id="myAlert" role="alert">
@@ -22,7 +24,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="confirmAction" type="button" class="btn btn-primary">Đồng ý</button>
+                    <button id="confirmAction"  type="button" class="btn btn-primary">Đồng ý</button>
                 </div>
             </div>
         </div>
@@ -123,5 +125,11 @@
 </div>
 
 @section Styles{
+    <link rel="stylesheet" href="~/js/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="~/css/addnew.css">
+}
+
+@section Scripts{
+    <script src="~/js/summernote/summernote-bs4.js"></script>
+    <script src="~/js/addnew.js"></script>
 }
