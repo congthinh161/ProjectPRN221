@@ -1,21 +1,26 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StoreManagement.IService;
 using StoreManagement.Models;
 using StoreManagement.Services;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StoreManagement
 {
     public class Program
     {
+        public IConfiguration Configuration { get; }
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //var Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<WebContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("Web")));
             builder.Services.AddScoped<IProductService, ProductServices>();
             builder.Services.AddScoped<ICategoryService, CategoryServices>();
+            
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(option =>
             {

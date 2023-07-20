@@ -2,6 +2,9 @@
 @model StoreManagement.Pages.Admin.ProductManageModel
 @{
     Layout = "_AdminLayout";
+
+    int totalPage = (int)ViewData["TotalPage"];
+    //int currentPage = (int)ViewData["CurrentPage"];
 }
 @using System.Globalization
 <div class="container-fluid">
@@ -25,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-12 content">
-            <h1>Tất cả sản phẩm</h1>
+            <h1>Tất cả sản phẩm </h1>
             <div class="second-nav">
                 <a asp-page="AddNewProduct"><p><i class="fa-solid fa-plus"></i>&nbsp;Thêm sản phẩm mới</p></a>
 
@@ -58,6 +61,28 @@
 
             </table>
 
+            <div class="paging-wrapper">
+                @if (totalPage > 1)
+                {
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item @(Model.currentPage == 0 ? "disabled" : "")">
+                                <a class="page-link" asp-route-currentPage="@(Model.currentPage-1)"  tabindex="-1"><i class="fa-solid fa-angles-left"></i></a>
+                            </li>
+                            @for (int i = 0; i < totalPage; i++)
+                            {
+                                <li class="page-item @(Model.currentPage== i ? "active" : "") ">
+                                    <a class="page-link" asp-route-currentPage="@i" tabindex="-1">@(i+1)</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.currentPage == totalPage - 1 ? "disabled" : "")">
+
+                                <a class="page-link" asp-route-currentPage="@(Model.currentPage+1)" tabindex="-1"><i class="fa-solid fa-angles-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                }
+            </div>
         </div>
     </div>
 </div>
