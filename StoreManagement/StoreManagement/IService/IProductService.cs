@@ -12,7 +12,6 @@ namespace StoreManagement.IService
         public void AddNewProduct(Product product);
         public int RemoveProduct(string pId);
         public int UpdateProduct(Product product);
-
-
+        public dynamic BestSellProduct(int take);
     }
 }

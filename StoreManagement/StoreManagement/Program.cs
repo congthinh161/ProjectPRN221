@@ -13,7 +13,7 @@ namespace StoreManagement
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //var Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            // Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
@@ -26,6 +26,8 @@ namespace StoreManagement
             builder.Services.AddScoped<IColorDetailServices, ColorDetailServices>();
             builder.Services.AddScoped<IStorageDetailServices, StorageDetailServices>();
             builder.Services.AddScoped<IUsersManageServices, UsersManageService>();
+            builder.Services.AddScoped<IOrderServices, OrderService>();
+            builder.Services.AddScoped<IOrderDetailServices, OrderDetailService>();
             #endregion
 
             builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");

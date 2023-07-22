@@ -109,5 +109,31 @@ namespace StoreManagement.Services
                 return 0;
             }
         }
+
+        public dynamic BestSellProduct(int take)
+        {
+            return _context.Products.Join(_context.OrderDetails, pro => pro.Pid, od => od.Pid, (pro, od) => new { pro, od }).GroupBy(x => new
+            {
+                x.pro.Id,
+                x.pro.Pid,
+                x.pro.Cid,
+                x.pro.Name,
+                x.pro.Image,
+                x.pro.Price,
+                x.pro.Description
+            }).OrderByDescending(x => x.Sum(y => y.od.Quantity)).Select(x => new
+            {
+                Id = x.Key.Id,
+                Pid = x.Key.Pid,
+                Cid = x.Key.Cid,
+                Name = x.Key.Name,
+                Image = x.Key.Image,
+                Price = x.Key.Price,
+                Description = x.Key.Description,
+                Count = x.Sum(x => x.od.Quantity)
+
+            }).Take(take).ToList();
+        }
+
     }
 }

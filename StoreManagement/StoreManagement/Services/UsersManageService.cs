@@ -75,5 +75,10 @@ namespace StoreManagement.Services
             }
             else return 1;
         }
+        public User GetUserByOId(int oid)
+        {
+            Order order = _context.Orders.FirstOrDefault(x => x.Id == oid);
+            return _context.Users.FirstOrDefault(x => x.Username.Equals(order.Uname));
+        }
     }
 }

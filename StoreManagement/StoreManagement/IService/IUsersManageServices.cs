@@ -10,6 +10,7 @@ namespace StoreManagement.IService
         public User GetUserData(string userName);
         public int UpdateRole(User user);
         public User CheckExist(string username);
+        public User GetUserByOId(int oid);
 
     }
 }
