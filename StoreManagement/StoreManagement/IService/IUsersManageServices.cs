@@ -1,0 +1,15 @@
+﻿using StoreManagement.Models;
+
+namespace StoreManagement.IService
+{
+    public interface IUsersManageServices
+    {
+        public List<User> GetAll();
+        public int CountUser(string uname);
+        public List<User> GetUserPaging(int take, string uname);
+        public User GetUserData(string userName);
+        public int UpdateRole(User user);
+        public User CheckExist(string username);
+
+    }
+}

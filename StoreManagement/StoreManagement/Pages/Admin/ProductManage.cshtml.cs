@@ -9,6 +9,7 @@ using System.Text.Json;
 
 namespace StoreManagement.Pages.Admin
 {
+    [IgnoreAntiforgeryToken]
     public class ProductManageModel : PageModel
     {
         private readonly WebContext _context;

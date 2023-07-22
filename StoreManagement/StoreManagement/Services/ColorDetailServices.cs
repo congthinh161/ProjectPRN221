@@ -20,5 +20,45 @@ namespace StoreManagement.Services
             _context.AddRange(colorsList);
             _context.SaveChanges();
         }
+
+        public List<ColorDetail> GetColorDetail(string pid)
+        {
+            return _context.ColorDetails.Where(x => x.Pid.Equals(pid)).ToList();
+        }
+
+        public int RemoveColor(int id)
+        {
+            ColorDetail color = _context.ColorDetails.Where(x => x.Id == id).FirstOrDefault();
+            try
+            {
+                _context.ColorDetails.Remove(color);
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        public int UpdateColorDetails(List<ColorDetail> colorDetails)
+        {
+            try
+            {
+                foreach (ColorDetail colorDetail in colorDetails)
+                {
+                    ColorDetail pd = _context.ColorDetails.Where(x => x.Id == colorDetail.Id && x.Pid == colorDetail.Pid).FirstOrDefault();
+                    pd.Color = colorDetail.Color;
+                }
+                //context.UpdateRange(colorDetails);
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+        }
     }
 }

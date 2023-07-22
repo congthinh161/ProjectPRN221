@@ -20,6 +20,12 @@ namespace StoreManagement.Services
         {
             return _context.Products.ToList();
         }
+
+        public Product GetProductByPid(string pid)
+        {
+            return _context.Products.Where(x => x.Pid.Equals(pid)).FirstOrDefault();
+        }
+
         public List<Product> GetListProductPaging(int skip)
         {
             paging = Convert.ToInt32(_config.GetSection("PageSettings")["Paging"]);
@@ -80,6 +86,28 @@ namespace StoreManagement.Services
         {
             _context.Add(product);
             _context.SaveChanges();
+        }
+
+        public int UpdateProduct(Product product)
+        {
+            Product p = _context.Products.FirstOrDefault(x => x.Pid == product.Pid);
+            try
+            {
+                p.Cid = product.Cid;
+                p.Name = product.Name;
+                p.Image = product.Image;
+                p.Price = product.Price;
+                p.Description = product.Description;
+                p.Amount = product.Amount;
+                //context.Update(product);
+                _context.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
         }
     }
 }

@@ -18,12 +18,16 @@ namespace StoreManagement
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<WebContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("Web")));
+            
+            #region Services Scoped
             builder.Services.AddScoped<IProductService, ProductServices>();
             builder.Services.AddScoped<ICategoryService, CategoryServices>();
             builder.Services.AddScoped<IProductDetailService, ProductDetailServices>();
             builder.Services.AddScoped<IColorDetailServices, ColorDetailServices>();
             builder.Services.AddScoped<IStorageDetailServices, StorageDetailServices>();
-            
+            builder.Services.AddScoped<IUsersManageServices, UsersManageService>();
+            #endregion
+
             builder.Services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(option =>
