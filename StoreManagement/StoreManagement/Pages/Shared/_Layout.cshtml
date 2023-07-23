@@ -49,7 +49,7 @@
             </div>
 
 
-            <form action="/Search/SearchByName" class="search-form h-auto">
+            <form action="/HomePage/SearchByName" method="Get" class="search-form h-auto">
                 <input type="search"name="value" placeholder="Bạn muốn tìm gì?" id="search-box" value="@((string)ViewData["SearchData"]!=null?(string)ViewData["SearchData"]:"")">
                 <button class="btn btn-primary rounded-0 " style="height:40px;width:42.5px" type="submit"><i for="search-box" class="fas fa-search"></i></button>
             </form>
@@ -69,8 +69,8 @@
                                 <a href="/Admin/Dashboard">Trang quản lí</a>
                             }
                             <a href="/Authentication/Profile">Thông tin tài khoản</a>
-                            <a href="/Authentication/ViewOrders">Đơn hàng</a>
-                            <a href="/Authentication/Logout">Đăng xuất</a>
+                            <a href="/Authentication/Orders">Đơn hàng</a>
+                            <a href="/Authentication/Authentications?handler=Logout">Đăng xuất</a>
                         </div>
                     </div>
                 }
@@ -97,10 +97,10 @@
                             <li class="nav-component dropdown ">
                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Sản phẩm theo giá</a>
                                 <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/4-5">Từ 4 - 5 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/5-10">Từ 5 - 10 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/10-30">Từ 10 - 30 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/30-50">Từ 30 - 50 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/SearchByPrice?id=4-5">Từ 4 - 5 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/SearchByPrice?id=5-10">Từ 5 - 10 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/SearchByPrice?id=10-30">Từ 10 - 30 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/SearchByPrice?id=30-50">Từ 30 - 50 triệu</a>
                                 </div>
                             </li>
                         </ul>

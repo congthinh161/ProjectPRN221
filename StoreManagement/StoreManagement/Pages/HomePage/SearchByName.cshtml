@@ -1,5 +1,5 @@
 ﻿@page
-@model StoreManagement.Pages.HomePage.IndexModel
+@model StoreManagement.Pages.HomePage.SearchByNameModel
 @using Models
 @using System.Globalization;
 @{
@@ -32,17 +32,15 @@
             foreach (Product product in products)
             {
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="/HomePage/ProductDetails?id=@product.Pid">
                     <div class="item-wrapper">
                         <div class="item-img">
-                            <img src="@product.Image" class="img-responsive img-i" alt="@product.Name">
+                            <a href="/HomePage/ProductDetails?id=@product.Pid"><img src="@product.Image" class="img-responsive img-i" alt="@product.Name"></a>
                         </div>
                         <div class="item-price">
                             <h3>@product.Name</h3>
                             <p class="i-price">@product.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")đ</p>
                         </div>
                     </div>
-                    </a>
                 </div>
             };
         }
@@ -61,22 +59,22 @@
         <nav aria-label="...">
             <ul class="pagination">
                 <li class="page-item @(Model.currentPage == 0 ? "disabled" : "")">
-                    <a class="page-link" asp-route-currentPage="@(Model.currentPage-1)" asp-route-id="@cid" tabindex="-1"><i class="fa-solid fa-angles-left"></i></a>
+                    <a class="page-link" asp-route-currentPage="@(Model.currentPage-1)" asp-route-value="@Model.SearchByName" tabindex="-1"><i class="fa-solid fa-angles-left"></i></a>
                 </li>
                 @for (int i = 0; i < totalPage; i++)
                 {
                     <li class="page-item @(Model.currentPage== i ? "active" : "") ">
-                        <a class="page-link" asp-route-currentPage="@i" asp-route-id="@cid" tabindex="-1">@(i + 1)</a>
+                        <a class="page-link" asp-route-currentPage="@i" asp-route-value="@Model.SearchByName" tabindex="-1">@(i + 1)</a>
                     </li>
                 }
                 <li class="page-item @(Model.currentPage == totalPage - 1 ? "disabled" : "")">
-                    <a class="page-link" asp-route-currentPage="@(Model.currentPage+1)" asp-route-id="@cid" tabindex="-1"><i class="fa-solid fa-angles-right"></i></a>
+
+                    <a class="page-link" asp-route-currentPage="@(Model.currentPage+1)" asp-route-value="@Model.SearchByName" tabindex="-1"><i class="fa-solid fa-angles-right"></i></a>
                 </li>
             </ul>
         </nav>
     }
 </div>
-
 @section Styles{
     <link rel="stylesheet" href="~/css/index.css">
 }

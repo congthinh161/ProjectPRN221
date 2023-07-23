@@ -86,6 +86,21 @@ namespace StoreManagement.Services
             Order order = _context.Orders.FirstOrDefault(x => x.Id == oid);
             return _context.Users.FirstOrDefault(x => x.Username.Equals(order.Uname));
         }
-
+        public int UpdateProfile(User user)
+        {
+            User check = CheckExist(user.Username);
+            if (check != null)
+            {
+                check.Firstname = user.Firstname;
+                check.Lastname = user.Lastname;
+                check.Birthday = user.Birthday;
+                check.Email = user.Email;
+                check.Phone = user.Phone;
+                check.Address = user.Address;
+                _context.SaveChanges();
+                return 0;
+            }
+            else return 1;
+        }
     }
 }

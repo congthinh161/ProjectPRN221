@@ -13,10 +13,6 @@ namespace StoreManagement.Services
             _context = context;
         }
 
-        public List<Order> GetOrderByUname(string uname)
-        {
-            return _context.Orders.Where(x => x.Uname.Equals(uname)).ToList();
-        }
 
         public List<OrderDetail> GetOrderDetailsByOId(int oid)
         {

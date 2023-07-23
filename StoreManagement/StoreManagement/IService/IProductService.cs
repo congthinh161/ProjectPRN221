@@ -15,6 +15,11 @@ namespace StoreManagement.IService
         public dynamic BestSellProduct(int take);
         public List<Product> SearchByCategoryPaging(int id, int skip);
         public int CountAllProductsByCateId(int cateId);
+        public int GetAllProductsByName(string search);
+        public List<Product> SearchByName(string search, int skip);
+        public Product GetProductById(int id);
+        public int GetAllProductsByPrice(int from, int to);
+        public List<Product> SearchByPricePaging(int from, int to, int skip);
 
     }
 }

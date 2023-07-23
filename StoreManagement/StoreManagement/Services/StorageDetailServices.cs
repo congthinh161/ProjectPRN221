@@ -10,6 +10,10 @@ namespace StoreManagement.Services
         {
             _context = context;
         }
+        public List<StorageDetail> GetAllStorage()
+        {
+            return _context.StorageDetails.ToList();
+        }
         public void AddStorageDetails(List<string> storages, string pid)
         {
             List<StorageDetail> storageDetails = new List<StorageDetail>();
@@ -60,6 +64,9 @@ namespace StoreManagement.Services
                 return 0;
             }
         }
-
+        public StorageDetail GetStorageById(int cid)
+        {
+            return _context.StorageDetails.FirstOrDefault(x => x.Id == cid);
+        }
     }
 }

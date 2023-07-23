@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StoreManagement.IService;
+using StoreManagement.Middleware;
 using StoreManagement.Models;
 using StoreManagement.Services;
 using System.Security.Cryptography.X509Certificates;
@@ -54,7 +55,10 @@ namespace StoreManagement
             app.UseRouting();
 
             app.UseAuthorization();
+
             app.UseSession();
+            
+            app.UseMiddleware<CheckAccessMiddleware>();
 
             app.MapRazorPages();
 

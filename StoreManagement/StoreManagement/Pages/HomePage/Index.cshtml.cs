@@ -28,6 +28,8 @@ namespace StoreManagement.Pages.HomePage
         [BindProperty (SupportsGet =true)]
         public int currentPage { get; set; }=0;
         public Category category { get; set; }
+
+        public string SearchByName { get; set; }
         public void OnGet(int id )
         {
             paging = Convert.ToInt32(_config.GetSection("PageSettings")["Paging"]);

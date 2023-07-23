@@ -6,5 +6,7 @@ namespace StoreManagement.IService
     {
         public List<Order> GetAllOrders();
         public List<Order> GetTopValueOrder(int take);
+        public int AddOrder(User user, Cart cart, string description);
+        public List<Order> GetOrderByUname(string uname);
     }
 }

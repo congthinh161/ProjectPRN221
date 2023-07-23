@@ -90,7 +90,7 @@ namespace StoreManagement.Pages.Authentication
             }
         }
 
-        public IActionResult Logout()
+        public IActionResult OnGetLogout()
         {
             var session = HttpContext.Session;
             session.Clear();

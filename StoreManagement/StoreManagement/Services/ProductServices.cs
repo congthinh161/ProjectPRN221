@@ -158,6 +158,26 @@ namespace StoreManagement.Services
                 return _context.Products.Where(x => x.Cid == cateId).ToList().Count;
             }
         }
+        public int GetAllProductsByName(string search)
+        {
+            return _context.Products.Where(x => x.Name.Contains(search)).ToList().Count;
+        }
+        public List<Product> SearchByName(string search, int skip)
+        {
+            return _context.Products.Where(x => x.Name.Contains(search)).Skip(skip*paging).Take(paging).ToList();
+        }
+        public Product GetProductById(int id)
+        {
+            return _context.Products.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public int GetAllProductsByPrice(int from, int to)
+        {
+            return _context.Products.Where(x => x.Price >= from * 1000000 && x.Price <= to * 1000000).ToList().Count;
+        }
 
+        public List<Product> SearchByPricePaging(int from, int to, int skip)
+        {
+            return _context.Products.Where(x => x.Price >= from * 1000000 && x.Price <= to * 1000000).Skip(skip * paging).Take(paging).ToList();
+        }
     }
 }

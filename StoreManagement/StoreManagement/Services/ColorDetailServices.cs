@@ -10,6 +10,10 @@ namespace StoreManagement.Services
         {
             _context = context;
         }
+        public List<ColorDetail> GetAllColor()
+        {
+            return _context.ColorDetails.ToList();
+        }
         public void AddColorDetails(List<string> colors, string pid)
         {
             List<ColorDetail> colorsList = new List<ColorDetail>();
@@ -59,6 +63,11 @@ namespace StoreManagement.Services
                 Console.WriteLine(ex.Message);
                 return 0;
             }
+        }
+
+        public ColorDetail GetColorById(int cid)
+        {
+            return _context.ColorDetails.FirstOrDefault(x => x.Id == cid);
         }
     }
 }
