@@ -36,6 +36,7 @@ namespace StoreManagement
             {
                 option.IdleTimeout = TimeSpan.FromMinutes(10);
             });
+            
 
             var app = builder.Build();
 
@@ -53,6 +54,7 @@ namespace StoreManagement
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.MapRazorPages();
 

@@ -16,6 +16,24 @@ namespace StoreManagement.Services
             paging  = Convert.ToInt32(_config.GetSection("PageSettings")["Paging"]);
         }
 
+        public User Login(string user, string pass)
+        {
+            return _context.Users.Where(x => x.Username.Equals(user) && x.Password.Equals(pass)).FirstOrDefault();
+        }
+
+        public int Register(User user)
+        {
+            User check = CheckExist(user.Username);
+            if (check == null)
+            {
+                user.Role = "us";
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return 0;
+            }
+            else return 1;
+        }
+
         public List<User> GetAll()
         {
             return _context.Users.ToList();
@@ -63,22 +81,11 @@ namespace StoreManagement.Services
             return _context.Users.Where(x => x.Username.Equals(username)).FirstOrDefault();
         }
 
-        public int Register(User user)
-        {
-            User check = CheckExist(user.Username);
-            if (check == null)
-            {
-                user.Role = "us";
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return 0;
-            }
-            else return 1;
-        }
         public User GetUserByOId(int oid)
         {
             Order order = _context.Orders.FirstOrDefault(x => x.Id == oid);
             return _context.Users.FirstOrDefault(x => x.Username.Equals(order.Uname));
         }
+
     }
 }

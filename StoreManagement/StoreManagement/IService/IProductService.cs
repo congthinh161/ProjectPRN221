@@ -13,5 +13,8 @@ namespace StoreManagement.IService
         public int RemoveProduct(string pId);
         public int UpdateProduct(Product product);
         public dynamic BestSellProduct(int take);
+        public List<Product> SearchByCategoryPaging(int id, int skip);
+        public int CountAllProductsByCateId(int cateId);
+
     }
 }

@@ -4,6 +4,8 @@ namespace StoreManagement.IService
 {
     public interface IUsersManageServices
     {
+        public User Login(string user, string pass);
+        public int Register(User user);
         public List<User> GetAll();
         public int CountUser(string uname);
         public List<User> GetUserPaging(int take, string uname);

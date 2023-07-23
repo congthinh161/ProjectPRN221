@@ -1,7 +1,14 @@
-﻿
-@using Microsoft.AspNetCore.Http
+﻿@using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
-
+@using Models
+@{
+    string json = Context.Session.GetString("user");
+    User user = null;
+    if (!string.IsNullOrEmpty(json))
+    {
+        user = JsonConvert.DeserializeObject<User>(json);
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,58 +42,66 @@
     <header class="header">
         <div class="header-child-1">
             <div class="logo">
-                <a href="/"><img src="~/img/LogoMobile.png" width="40" height="40" alt="Logo"></a>
+                <a href="/HomePage/Index"><img src="~/img/LogoMobile.png" width="40" height="40" alt="Logo"></a>
                 <div class="brand-name">
                     <p class="mt-2">Cellphone Store</p>
                 </div>
             </div>
 
 
-            <form action="/Search/SearchByName" class="search-form">
-                <input type="search" name="value" placeholder="Bạn muốn tìm gì?" id="search-box" value="@((string)ViewData["SearchData"]!=null?(string)ViewData["SearchData"]:"")">
-                <label for="search-box" class="fas fa-search"></label>
+            <form action="/Search/SearchByName" class="search-form h-auto">
+                <input type="search"name="value" placeholder="Bạn muốn tìm gì?" id="search-box" value="@((string)ViewData["SearchData"]!=null?(string)ViewData["SearchData"]:"")">
+                <button class="btn btn-primary rounded-0 " style="height:40px;width:42.5px" type="submit"><i for="search-box" class="fas fa-search"></i></button>
             </form>
             <div class="icons">
                 <div class="shoping-cart">
                     <div class="fas fa-shopping-cart"></div>
                     <a href="/Cart/ShowCart">Giỏ hàng</a>
                 </div>
-
+                @if (user != null)
+                {
+                    <div class="users">
+                        <div class="fas fa-user"></div>
+                        <a href="#">Xin chào, @user.Lastname</a>
+                        <div class="dropdown-content">
+                            @if (user.Role == "sa")
+                            {
+                                <a href="/Admin/Dashboard">Trang quản lí</a>
+                            }
+                            <a href="/Authentication/Profile">Thông tin tài khoản</a>
+                            <a href="/Authentication/ViewOrders">Đơn hàng</a>
+                            <a href="/Authentication/Logout">Đăng xuất</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
                     <div class="users">
                         <div class="fas fa-user"></div>
                         <a href="/Authentication/Authentications">Đăng nhập</a>
                     </div>
-
+                }
             </div>
         </div>
         <div class="header-child-2">
             <nav class="navbar navbar-expand-md">
                 <div class="container">
-                    <button class="navbar-toggler d-none" data-toggle="collapse" data-target="#navcol-1">
-                        <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-                    </button>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav w-100 justify-content-between">
-                            <li class="nav-component dropdown ">
+                        <ul class="nav navbar-nav w-100 ">
+                            <li class="nav-component dropdown"style="margin-right:80px">
                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Danh mục sản phẩm</a>
                                 <div class="dropdown-menu" id="catemenu" role="menu">
-                                    <a class="dropdown-item" role="presentation" href="/Search/Product/0">Tất cả sản phẩm</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/Index?id=0">Tất cả sản phẩm</a>
                                 </div>
                             </li>
                             <li class="nav-component dropdown ">
                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Sản phẩm theo giá</a>
                                 <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item" role="presentation" href="/Search/ProductByPrice/4-5">Từ 4 - 5 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/Search/ProductByPrice/5-10">Từ 5 - 10 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/Search/ProductByPrice/10-30">Từ 10 - 30 triệu</a>
-                                    <a class="dropdown-item" role="presentation" href="/Search/ProductByPrice/30-50">Từ 30 - 50 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/4-5">Từ 4 - 5 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/5-10">Từ 5 - 10 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/10-30">Từ 10 - 30 triệu</a>
+                                    <a class="dropdown-item" role="presentation" href="/HomePage/ProductByPrice/30-50">Từ 30 - 50 triệu</a>
                                 </div>
-                            </li>
-                            <li class="nav-component dropdown">
-                                <a class="nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Miễn phí giao hàng</a>
-                            </li>
-                            <li class="nav-component dropdown">
-                                <a class="nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Đổi trả trong 15 ngày</a>
                             </li>
                         </ul>
                     </div>

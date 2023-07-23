@@ -13,7 +13,7 @@ namespace StoreManagement.Services
         {
             _context = context;
             _config = config;
-            //paging  = Convert.ToInt32(_config.GetSection("PageSettings")["Paging"]);
+            paging  = Convert.ToInt32(_config.GetSection("PageSettings")["Paging"]);
         }
 
         public List<Product> GetListProduct()
@@ -133,6 +133,30 @@ namespace StoreManagement.Services
                 Count = x.Sum(x => x.od.Quantity)
 
             }).Take(take).ToList();
+        }
+        public List<Product> SearchByCategoryPaging(int id, int skip)
+        {
+            List<Product> products = new List<Product>();
+            if (id == 0)
+            {
+                products = _context.Products.Skip(skip * paging).Take(paging).ToList();
+            }
+            else
+            {
+                products =_context.Products.Where(x => x.Cid == id).Skip(skip * paging).Take(paging).ToList();
+            }
+            return products;
+        }
+        public int CountAllProductsByCateId(int cateId)
+        {
+            if (cateId == 0)
+            {
+                return _context.Products.ToList().Count;
+            }
+            else
+            {
+                return _context.Products.Where(x => x.Cid == cateId).ToList().Count;
+            }
         }
 
     }

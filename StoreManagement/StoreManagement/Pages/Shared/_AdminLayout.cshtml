@@ -1,6 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using Newtonsoft.Json
-
+@using Models
+@{
+    string json = Context.Session.GetString("user");
+    User user = null;
+    if (!string.IsNullOrEmpty(json))
+    {
+        user = JsonConvert.DeserializeObject<User>(json);
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +44,9 @@
             <div class="icons">
                     <div class="users">
                         <div class="fas fa-user"></div>
-                        <a href="#">Xin chào, </a>
+                    <a href="#">Xin chào, @user.Lastname</a>
                         <div class="dropdown-content">
-                            <a href="/">Về trang chủ</a>
+                            <a href="/HomePage/Index">Về trang chủ</a>
                             <a href="/Authentication/Logout">Đăng xuất</a>
                         </div>
                     </div>
