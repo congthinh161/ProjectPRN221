@@ -102,11 +102,11 @@ h1 {
 
 
 .dilivery-info {
-    background-color: #343a40;
+    background-color: #dededd;
     margin-bottom: 2rem;
     /* text-align: left; */
     height: fit-content;
-    color: #ffffff;
+    color: black;
 }
 
 h5 {

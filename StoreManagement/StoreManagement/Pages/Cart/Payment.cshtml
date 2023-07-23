@@ -16,6 +16,7 @@
     }
     string size = (string)ViewData["CartSize"];
 }
+    <input class="visually-hidden invisible" id="uid" value="@user.Username"/>
 <div class="row">
     <form action="/Cart/Payment" method="post" class="form">
         <div class="col-md-12 dilivery-info">
@@ -50,7 +51,7 @@
                         <td><img id="img-items" src="@(item.products.Image)" class="img-responsive" alt=""></td>
                         <td>&nbsp;@(item.products.Name) </td>
                         <td>@(item.colorDetail.Color) - @(item.storageDetail.Storage)</td>
-                        <td id="item-price" class="i-price">@(item.products.Price.ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", "."))đ</td>
+                        <td id="item-price" class="i-price">@(item.products.Price.ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", ".")) ₫</td>
                         <td>
                             <div>
                                 <input type="hidden" value="@item.products.Id" name="pid">
@@ -77,4 +78,9 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/css/cart.css">
+}
+@section Scripts{
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
+    <script src="~/js/ClearOrder.js"></script>
 }

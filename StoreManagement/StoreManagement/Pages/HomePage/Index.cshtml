@@ -38,8 +38,8 @@
                             <img src="@product.Image" class="img-responsive img-i" alt="@product.Name">
                         </div>
                         <div class="item-price">
-                            <h3>@product.Name</h3>
-                            <p class="i-price">@product.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")đ</p>
+                            <h3 name="pname">@product.Name</h3>
+                                <p class="i-price" id="price" name="price">@product.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".") ₫</p>
                         </div>
                     </div>
                     </a>
@@ -79,4 +79,9 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/css/index.css">
+}
+@section Scripts{
+    <script src="~/js/UpdatePriceIndex.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
 }

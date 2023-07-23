@@ -2,6 +2,7 @@
 using StoreManagement.IService;
 using StoreManagement.Middleware;
 using StoreManagement.Models;
+using StoreManagement.Pages;
 using StoreManagement.Services;
 using System.Security.Cryptography.X509Certificates;
 
@@ -37,7 +38,7 @@ namespace StoreManagement
             {
                 option.IdleTimeout = TimeSpan.FromMinutes(10);
             });
-            
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -61,6 +62,8 @@ namespace StoreManagement
             app.UseMiddleware<CheckAccessMiddleware>();
 
             app.MapRazorPages();
+
+            app.MapHub<StoreHub>("/storeHub");
 
             app.Run();
         }

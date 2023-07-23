@@ -57,7 +57,7 @@
                 <br>
                 <div class="price">
                     <p id="price-title">Giá niêm yết:</p>
-                    <p id="price-content">&nbsp;&nbsp;@product.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")đ</p>
+                    <p id="price-content">&nbsp;&nbsp;@product.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")  ₫</p>
                 </div>
                 <div class="btn">
                     <div id="message"></div>
@@ -110,6 +110,9 @@
 
 @section Scripts {
     <script src="~/js/detail.js"></script>
+    <script src="~/js/addOrder.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
 }
 
 @section Styles{

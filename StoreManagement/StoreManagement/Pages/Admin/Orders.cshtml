@@ -10,7 +10,7 @@
         <div class="col-12">
             <h2>Tất cả đơn hàng của bạn</h2>
         </div>
-        <table class="table table-dark">
+        <table class="table table-light">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -28,7 +28,7 @@
                             string birthday = String.Format("{0:dd/MM/yyyy}", item.Orderdate);
                         }
                         <td>@birthday</td>
-                        <td>@item.Total.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")đ</td>
+                        <td>@item.Total.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".") ₫</td>
                         <td><a href="/Admin/OrderDetails?id=@item.Id">Chi tiết</a></td>
                     </tr>
                 }

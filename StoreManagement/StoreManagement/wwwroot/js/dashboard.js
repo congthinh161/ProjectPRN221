@@ -10,7 +10,7 @@ $(document).ready(function () {
             let target = $(e.target);
             if (target.hasClass('topsell')) {
                 getTopSellData(5);
-            } else if (target.hasClass('highorders')){
+            } else if (target.hasClass('highorders')) {
                 getTopHighestOrder(5);
             }
         });
@@ -48,11 +48,11 @@ $(document).ready(function () {
 
     function drawTopSellChart(result) {
         let arr = [[{ label: 'Tên sản phẩm', type: 'string' },
-            { label: 'Số lượng', type: 'number' }]];
+        { label: 'Số lượng', type: 'number' }]];
         for (item in result) {
             arr.push([result[item].name, result[item].count]);
         }
-        
+
         let data = google.visualization.arrayToDataTable(arr);
 
         var view = new google.visualization.DataView(data);
@@ -67,23 +67,22 @@ $(document).ready(function () {
 
         let options = {
             title: `Top ${arr.length - 1} sản phẩm bán chạy!`,
-            width: 1200,
-            height: 600,
+            width: 600,
+            height: 1000,
             legend: 'none',
             hAxis: { title: 'Số lượng (đơn vị: cái)' }
         }
 
-        let chart = new google.visualization.BarChart(document.getElementById('linechart_topsell'));
+        let chart = new google.visualization.ColumnChart(document.getElementById('linechart_topsell'));
 
         chart.draw(view, options);
 
     }
 
     function drawTopHighestOrderCharts(result) {
-        let arr = [[{ label: 'Mã đơn hàng', type: 'string' },
-        { label: 'Giá trị', type: 'number' }]];
+        let arr = [[{ label: 'Mã đơn hàng', type: 'string' },{ label: 'Giá trị', type: 'number' } ]];
         for (item in result) {
-            arr.push([result[item].id, result[item].total/1000000]);
+            arr.push([result[item].id, result[item].total / 1000000]);
         }
         let data = google.visualization.arrayToDataTable(arr);
 
@@ -103,7 +102,7 @@ $(document).ready(function () {
             height: 600,
             legend: 'none',
             hAxis: { title: 'Đơn vị: Triệu VND' },
-            vAxis: { title: 'Mã đơn hàng'}
+            vAxis: { title: 'Mã đơn hàng' }
         }
 
         let chart = new google.visualization.BarChart(document.getElementById('linechart_highestorder'));

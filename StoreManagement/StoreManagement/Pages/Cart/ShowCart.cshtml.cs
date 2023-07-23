@@ -28,7 +28,6 @@ namespace StoreManagement.Pages.Cart
         public Models.Cart cart { get; set; }
         public void OnGet()
         {
-
             products = _productService.GetListProduct();
             colorDetails = _colorDetailServices.GetAllColor();
             storageDetails = _storageDetailServices.GetAllStorage();
@@ -52,6 +51,62 @@ namespace StoreManagement.Pages.Cart
             {
                 ViewData["CartSize"] = "display";
             }
+        }
+
+        public IActionResult OnGetAdd()
+        {
+            products = _productService.GetListProduct();
+            colorDetails = _colorDetailServices.GetAllColor();
+            storageDetails = _storageDetailServices.GetAllStorage();
+
+            string element = "";
+
+            if (Request.Cookies["cartS"] != null)
+            {
+                element += Request.Cookies["cartS"];
+            }
+
+            cart = new Models.Cart(element, products, colorDetails, storageDetails);
+
+            Console.WriteLine("Cart" + " " + element);
+
+            if (cart.Items.Count <= 0)
+            {
+                ViewData["CartSize"] = "hidden";
+            }
+            else
+            {
+                ViewData["CartSize"] = "display";
+            }
+            return new JsonResult(new { status = "Success" });
+        }
+
+        public IActionResult OnGetClear()
+        {
+            products = _productService.GetListProduct();
+            colorDetails = _colorDetailServices.GetAllColor();
+            storageDetails = _storageDetailServices.GetAllStorage();
+
+            string element = "";
+
+            if (Request.Cookies["cartS"] != null)
+            {
+                element += Request.Cookies["cartS"];
+            }
+
+            cart = new Models.Cart(element, products, colorDetails, storageDetails);
+
+            Console.WriteLine("Cart" + " " + element);
+
+            if (cart.Items.Count <= 0)
+            {
+                ViewData["CartSize"] = "hidden";
+            }
+            else
+            {
+                ViewData["CartSize"] = "display";
+            }
+            return new JsonResult(new { status = "Success" });
         }
 
         public IActionResult OnPostQuantityProcess(int id, int num, int cid, int sid)

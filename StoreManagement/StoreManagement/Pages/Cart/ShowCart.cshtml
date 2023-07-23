@@ -31,7 +31,7 @@
                     <td><img id="img-items" src="@(item.products.Image)" class="img-responsive" alt=""></td>
                     <td>&nbsp;@(item.products.Name) </td>
                     <td>@(item.colorDetail.Color) - @(item.storageDetail.Storage)</td>
-                    <td id="item-price" class="i-price">@(item.products.Price.ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", "."))đ</td>
+                    <td id="item-price" class="i-price">@(item.products.Price.ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", ".")) ₫</td>
                     <td>
                         <div>
                             <input type="hidden" value="@item.products.Id" name="pid">
@@ -46,7 +46,7 @@
                             </a>
                         </div>
                     </td>
-                    <td id="total-item-price" class="i-price">@((item.products.Price * item.quantity).ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", "."))đ</td>
+                    <td id="total-item-price" class="i-price">@((item.products.Price * item.quantity).ToString("C", CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",", ".")) ₫</td>
                     <td>
                         <input type="hidden" value="@item.products.Id" name="pid">
                         <input type="hidden" value="@item.colorDetail.Id" name="cid">
@@ -83,4 +83,8 @@ else if (size.Equals("hidden"))
 
 @section Scripts{
     <script src="~/js/cart.js"></script>
+    <script src="~/js/ClearOrderCart.js"></script>
+    <script src="~/js/addOrderCart.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
 }

@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CellphoneStore</title>
+    <title>@ViewData["Title"] - ShopPhoneOnline</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -44,14 +44,14 @@
             <div class="logo">
                 <a href="/HomePage/Index"><img src="~/img/LogoMobile.png" width="40" height="40" alt="Logo"></a>
                 <div class="brand-name">
-                    <p class="mt-2">Cellphone Store</p>
+                    <p class="mt-2">ShopPhoneOnline</p>
                 </div>
             </div>
 
 
             <form action="/HomePage/SearchByName" method="Get" class="search-form h-auto">
                 <input type="search"name="value" placeholder="Bạn muốn tìm gì?" id="search-box" value="@((string)ViewData["SearchData"]!=null?(string)ViewData["SearchData"]:"")">
-                <button class="btn btn-primary rounded-0 " style="height:40px;width:42.5px" type="submit"><i for="search-box" class="fas fa-search"></i></button>
+                <button class="btn btn-primary rounded-0 " style="height:40px;width:44px" type="submit"><i for="search-box" class="fas fa-search"></i></button>
             </form>
             <div class="icons">
                 <div class="shoping-cart">
@@ -122,7 +122,7 @@
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-md-12 mt-md-12 mt-12 text-center">
-                    <h5 class="text-uppercase">Cellphone store</h5>
+                    <h5 class="text-uppercase">ShopPhoneOnline</h5>
                     <p>Shop bán điện thoại uy tín, chất lượng cao.</p>
 
                 </div>
@@ -130,7 +130,7 @@
             </div>
             <div class="footer-copyright text-center py-3">
                 ©@DateTime.Now.Year Copyright:
-                <a href="/"> Cellphone store</a>
+                <a href="/"> ShopPhoneOnline</a>
             </div>
         </div>
     </footer>

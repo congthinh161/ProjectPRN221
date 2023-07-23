@@ -52,7 +52,7 @@
                             <td><img src="@item.Image" class="img-responsive item-img" alt="@item.Name"></td>
                             <td>@item.Name</td>
                             <td>@item.Pid</td>
-                            <td>@item.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".")đ</td>
+                            <td>@item.Price.ToString("C",CultureInfo.CreateSpecificCulture("vn-VN")).Substring(1).Replace(",",".") ₫</td>
                             <td>@item.Amount</td>
 
                             <td><a asp-page="/Admin/ProductDetails" asp-route-id="@item.Pid">Xem chi tiết</a>&nbsp;|&nbsp;<a href="#" onclick="openModal('@item.Pid')">Xóa</a></td>
